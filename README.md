@@ -100,3 +100,24 @@ For checking what achievements the user has completed and when they were complet
                 "unlocktime": 1451345072
             }...
 ```
+
+### AppDetails
+
+For getting info on Steam games
+
+```
+
+  "218620": {
+    "success": true,
+    "data": {
+      "type": "game",
+      "name": "PAYDAY 2",
+      "steam_appid": 218620,
+      "required_age": "18",
+      "is_free": false,
+      "controller_support": "full",
+      "dlc": [
+        1619070,
+        1555040,
+        1555050...
+```
