@@ -1,6 +1,10 @@
 # Achievement Tracker
 
-## [ERD](https://dbdiagram.io/d/606d049decb54e10c33f0196)
+## Planning
+
+[ERD](https://dbdiagram.io/d/606d049decb54e10c33f0196)
+
+[Wireframe](https://www.figma.com/file/zyEKuuJzwq1R8pZr4SvO1j/Achievement-Tracker?node-id=0%3A1)
 
 ## Steam API Responses
 
