@@ -6,6 +6,8 @@
 
 [Wireframe](https://www.figma.com/file/zyEKuuJzwq1R8pZr4SvO1j/Achievement-Tracker?node-id=0%3A1)
 
+[Workflow Diagram](https://docs.google.com/presentation/d/1UKe2_nfhDuoGah0M4lmr4b_Qb7N80aM_G37YldTiirQ/edit?usp=sharing)
+
 ## Steam API Responses
 
 ### GetOwnedGames
