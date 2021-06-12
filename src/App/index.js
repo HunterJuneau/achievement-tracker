@@ -18,7 +18,7 @@ function App() {
           uid: authed.uid,
         };
         setUser(userInfoObj);
-      } else if (user === null) {
+      } else {
         setUser(false);
       }
     });
@@ -26,8 +26,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes setUser={setUser} />
+      {user && <NavBar />}
+      <Routes user={user} />
     </BrowserRouter>
   );
 }
