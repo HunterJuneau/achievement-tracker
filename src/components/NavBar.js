@@ -6,7 +6,7 @@ import { signOutUser } from '../helpers/auth';
 
 export default function NavBar() {
   return (
-    <Navbar>
+    <Navbar color='dark' dark id='navbar'>
       <NavbarBrand href='/'>Achievement Tracker</NavbarBrand>
       <Nav className='mr-auto' navbar>
         <NavItem>
