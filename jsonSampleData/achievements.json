@@ -1,0 +1,20 @@
+{
+  "-McC5jqBCsO3-1p697oH": {
+    "name": "I am a Marine Biologist",
+    "description": "Collect a fish in a bucket",
+    "gameKey": "-McB3CPnRWo-YsAzmQUJ",
+    "img": "https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/42/AchievementSprite.png/revision/latest?cb=20201210202049&version=1593367569952&format=original",
+    "achieved": false,
+    "key": "-McC5jqBCsO3-1p697oH",
+    "uid": "NmG2ZJ9v27fKrtxckg3K3fklQaj1"
+  },
+  "-McCCYmSIjpAD-g8zg6l": {
+    "name": "I've got a bad feeling about this",
+    "description": "Kill a Pillager Captain.",
+    "gameKey": "-McB3CPnRWo-YsAzmQUJ",
+    "img": "https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/42/AchievementSprite.png/revision/latest?cb=20201210202049&amp;version=1593367569952&amp;format=original",
+    "achieved": true,
+    "key": "-McCCYmSIjpAD-g8zg6l",
+    "uid": "NmG2ZJ9v27fKrtxckg3K3fklQaj1"
+  }
+}
