@@ -10,7 +10,7 @@ export default function NavBar() {
       <NavbarBrand href='/'>Achievement Tracker</NavbarBrand>
       <Nav className='mr-auto' navbar>
         <NavItem>
-          <NavLink href='/achievements'>Achievements</NavLink>
+          <NavLink href='/'>Achievements</NavLink>
         </NavItem>
         <NavItem>
           <NavLink href='/games'>Games</NavLink>
