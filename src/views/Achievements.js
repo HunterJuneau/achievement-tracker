@@ -1,19 +1,26 @@
 import React, { useEffect } from 'react';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
-import getAchievements from '../helpers/data/achievementsData';
+import { getAchievements } from '../helpers/data/achievementsData';
+import getGames from '../helpers/data/gamesData';
 import AchievementCard from '../components/cards/AchievementCard';
 
-export default function Achievements({ uid, setAchievements, achievements }) {
-  useEffect(
-    () => getAchievements(uid).then((response) => setAchievements(response)),
-    [],
-  );
+export default function Achievements({
+  uid,
+  setAchievements,
+  setGames,
+  achievements,
+}) {
+  useEffect(() => getAchievements(uid).then(setAchievements), []);
+  useEffect(() => getGames(uid).then(setGames), []);
 
   return (
-    <div id='achievements'>
-      <h2>ACHIEVEMENTS</h2>
-      <Table bordered id='achievementsTable'>
+    <div className='mx-auto my-3' id='achievements'>
+      <h1>Achievements</h1>
+      <a href='/form/Achievement/null'>
+        <Button>Add Achievement</Button>
+      </a>
+      <Table bordered className='my-4' id='achievementsTable'>
         <thead>
           <tr>
             <th></th>
@@ -39,7 +46,8 @@ export default function Achievements({ uid, setAchievements, achievements }) {
 }
 
 Achievements.propTypes = {
-  uid: PropTypes.string,
-  setAchievements: PropTypes.func,
-  achievements: PropTypes.array,
+  uid: PropTypes.any.isRequired,
+  setAchievements: PropTypes.func.isRequired,
+  setGames: PropTypes.func.isRequired,
+  achievements: PropTypes.array.isRequired,
 };

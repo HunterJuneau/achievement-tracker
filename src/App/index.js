@@ -7,7 +7,9 @@ import Routes from '../helpers/Routes';
 import './App.scss';
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
+  const [achievements, setAchievements] = useState([]);
+  const [games, setGames] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -27,7 +29,13 @@ function App() {
   return (
     <BrowserRouter>
       {user && <NavBar />}
-      <Routes user={user} />
+      <Routes
+        user={user}
+        games={games}
+        setGames={setGames}
+        achievements={achievements}
+        setAchievements={setAchievements}
+      />
     </BrowserRouter>
   );
 }

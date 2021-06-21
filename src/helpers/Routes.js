@@ -1,40 +1,70 @@
-import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { Redirect, Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Games from '../views/Games';
-import Unauthenticated from '../views/Unauthenticated';
 import Achievements from '../views/Achievements';
+import Games from '../views/Games';
+import FormView from '../views/FormView';
+import Unauthenticated from '../views/Unauthenticated';
 
-export default function Routes({ user }) {
-  const [achievements, setAchievements] = useState([]);
-  const [games, setGames] = useState([]);
+const PrivateRoute = ({ component: Component, user, ...rest }) => {
+  const routeChecker = (taco) => (
+    user ? (
+      <Component {...taco} uid={user.uid} />
+    ) : (
+      <Redirect to={{ pathname: '/unauthenticated', state: { from: taco.location } }} />
+    )
+  );
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
 
+PrivateRoute.propTypes = {
+  component: PropTypes.func,
+  user: PropTypes.any,
+};
+
+export default function Routes({
+  user,
+  achievements,
+  setAchievements,
+  setGames,
+  games,
+}) {
   return (
     <>
       <Switch>
-        {user ? (
-          <>
-            <Route
-              exact
-              path='/'
-              component={() => (
-                <Achievements
-                  uid={user.uid}
-                  achievements={achievements}
-                  setAchievements={setAchievements}
-                />
-              )}
+        <PrivateRoute
+          exact
+          path='/'
+          user={user}
+          component={() => (
+            <Achievements
+              achievements={achievements}
+              setAchievements={setAchievements}
+              setGames={setGames}
             />
-            <Route
-              path='/games'
-              component={() => (
-                <Games uid={user.uid} games={games} setGames={setGames} />
-              )}
+          )}
+        />
+        <PrivateRoute
+          path='/games'
+          user={user}
+          component={() => (
+            <Games games={games} setGames={setGames} />
+          )}
+        />
+        <PrivateRoute
+          path='/form/:type/:key'
+          user={user}
+          component={() => (
+            <FormView
+              setAchievements={setAchievements}
+              games={games}
             />
-          </>
-        ) : (
-          <Route path='/' component={Unauthenticated} />
-        )}
+          )}
+        />
+        <Route
+          path='/unauthenticated'
+          component={() => <Unauthenticated user={user} />}
+        />
       </Switch>
     </>
   );
@@ -42,4 +72,8 @@ export default function Routes({ user }) {
 
 Routes.propTypes = {
   user: PropTypes.any,
+  achievements: PropTypes.array.isRequired,
+  setAchievements: PropTypes.func.isRequired,
+  setGames: PropTypes.func.isRequired,
+  games: PropTypes.array.isRequired,
 };

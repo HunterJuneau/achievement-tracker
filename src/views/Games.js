@@ -4,9 +4,7 @@ import getGames from '../helpers/data/gamesData';
 import GameCard from '../components/cards/GameCard';
 
 export default function Games({ uid, setGames, games }) {
-  useEffect(() => {
-    getGames(uid).then((response) => setGames(response));
-  }, []);
+  useEffect(() => getGames(uid).then(setGames), []);
 
   return (
     <div className='m-5' id='games'>
