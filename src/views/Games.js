@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import getGames from '../helpers/data/gamesData';
 import GameCard from '../components/cards/GameCard';
 
-export default function Games({ uid, setGames, games }) {
+export default function Games({ uid }) {
+  const [games, setGames] = useState([]);
+
   useEffect(() => getGames(uid).then(setGames), []);
 
   return (

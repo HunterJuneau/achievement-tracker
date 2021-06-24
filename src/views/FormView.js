@@ -4,30 +4,26 @@ import PropTypes from 'prop-types';
 import AchievementForm from '../components/forms/AchievementForm';
 import { getSingleAchievement } from '../helpers/data/achievementsData';
 
-export default function FormView({
-  uid, setGames, setAchievements, games
-}) {
-  const { type } = useParams();
+export default function FormView({ uid, purpose, type }) {
   const { key } = useParams();
   const [data, setData] = useState({});
 
   useEffect(() => {
-    getSingleAchievement(key).then(setData);
+    if (purpose === 'update' && type === 'achievement') {
+      getSingleAchievement(key).then(setData);
+    }
   }, []);
 
   const formType = () => {
     switch (type) {
-      case 'Achievement':
+      case 'achievement':
         return (
           <AchievementForm
             userId={uid}
-            setGames={setGames}
-            setAchievements={setAchievements}
             data={data}
-            games={games}
           />
         );
-      case 'Game':
+      case 'game':
         return console.warn('Game Form WIP');
       default:
         return console.error('Wrong Form Type');
@@ -39,7 +35,6 @@ export default function FormView({
 
 FormView.propTypes = {
   uid: PropTypes.string.isRequired,
-  setGames: PropTypes.func.isRequired,
-  setAchievements: PropTypes.func.isRequired,
-  games: PropTypes.array.isRequired,
+  purpose: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };

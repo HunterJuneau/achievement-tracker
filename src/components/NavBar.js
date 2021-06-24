@@ -1,34 +1,25 @@
 import React from 'react';
 import {
-  Navbar, NavbarBrand, Nav, NavItem, NavLink, Button
+  Navbar, NavbarBrand, Nav, NavItem, Button
 } from 'reactstrap';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { signOutUser } from '../helpers/auth';
 
-export default function NavBar({ user }) {
-  console.warn(user);
+export default function NavBar() {
   return (
     <Navbar color='dark' dark id='navbar'>
       <NavbarBrand href='/'>Achievement Tracker</NavbarBrand>
-      {user && (
-        <>
-          <Nav className='mr-auto' navbar>
-            <NavItem>
-              <NavLink href='/'>Achievements</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href='/games'>Games</NavLink>
-            </NavItem>
-          </Nav>
-          <Button onClick={signOutUser} color='warning'>
-            Log Out
-          </Button>
-        </>
-      )}
+      <Nav className='mr-auto' navbar>
+        <NavItem>
+          <Link to='/achievements'>Achievements</Link>
+        </NavItem>
+        <NavItem>
+          <Link to='/games'>Games</Link>
+        </NavItem>
+      </Nav>
+      <Button onClick={signOutUser} color='warning'>
+        Log Out
+      </Button>
     </Navbar>
   );
 }
-
-NavBar.propTypes = {
-  user: PropTypes.any,
-};

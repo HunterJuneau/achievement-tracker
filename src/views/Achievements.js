@@ -1,25 +1,24 @@
-import React, { useEffect } from 'react';
-import { Table, Button } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { getAchievements } from '../helpers/data/achievementsData';
 import getGames from '../helpers/data/gamesData';
 import AchievementCard from '../components/cards/AchievementCard';
 
-export default function Achievements({
-  uid,
-  setAchievements,
-  setGames,
-  achievements,
-}) {
-  useEffect(() => getAchievements(uid).then(setAchievements), []);
-  useEffect(() => getGames(uid).then(setGames), []);
+export default function Achievements({ uid }) {
+  const [achievements, setAchievements] = useState([]);
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    getGames(uid).then(setGames);
+    getAchievements(uid).then(setAchievements);
+  }, []);
 
   return (
     <div className='mx-auto my-3' id='achievements'>
       <h1>Achievements</h1>
-      <a href='/form/Achievement/null'>
-        <Button>Add Achievement</Button>
-      </a>
+      <Link to='/achievements/new'>Add Achievement</Link>
       <Table bordered className='my-4' id='achievementsTable'>
         <thead>
           <tr>
@@ -37,6 +36,7 @@ export default function Achievements({
               img={achievement.img}
               key={achievement.key}
               name={achievement.name}
+              games={games}
             />
           ))}
         </tbody>
@@ -47,7 +47,4 @@ export default function Achievements({
 
 Achievements.propTypes = {
   uid: PropTypes.any.isRequired,
-  setAchievements: PropTypes.func.isRequired,
-  setGames: PropTypes.func.isRequired,
-  achievements: PropTypes.array.isRequired,
 };

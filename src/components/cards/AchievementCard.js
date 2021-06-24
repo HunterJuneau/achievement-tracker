@@ -7,7 +7,7 @@ export default function AchievementCard({
   return (
       <tr>
         <th scope='row'>
-          <img height='30px' src={img} alt={name} />
+          {img ? <img height='30px' src={img} alt={name} /> : ''}
         </th>
         <th>{name}</th>
         <th>{description}</th>

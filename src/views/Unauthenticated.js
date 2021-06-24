@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { signInUser } from '../helpers/auth';
 
 export default function Unauthenticated({ user }) {
-  console.warn(user);
+  useEffect(() => {
+    <Redirect to='/' />;
+  }, [user]);
+
   return (
     <>
       <h1 className='mx-auto'>Achievement Tracker</h1>

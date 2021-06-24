@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
+  Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import getGames from '../../helpers/data/gamesData';
@@ -13,51 +10,39 @@ import {
   createAchievement,
 } from '../../helpers/data/achievementsData';
 
-export default function AchievementForm({
-  userId,
-  setGames,
-  setAchievements,
-  data,
-  games,
-}) {
+export default function AchievementForm({ userId, data }) {
   const [achievement, setAchievement] = useState({
-    name: data ? data.name : '',
-    img: data ? data.img : '',
-    description: data ? data.description : '',
-    achieved: data ? data.achieved : false,
-    gameKey: data ? data.gameKey : '',
+    name: data.name || '',
+    img: data.img || '',
+    description: data.description || '',
+    achieved: data.achieved || false,
+    gameKey: data.gameKey || '',
     uid: userId,
-    key: data ? data.key : null,
+    key: data.key || null,
   });
+
+  const [games, setGames] = useState([]);
 
   useEffect(() => getGames(userId).then(setGames), []);
 
   const handleInputChange = (e) => {
     setAchievement((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.name === 'achieved' ? e.target.checked : e.target.value
     }));
+    console.warn(achievement);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (achievement.firebaseKey) {
-      updateAchievement(achievement).then(setAchievements);
+      updateAchievement(achievement);
     } else {
-      createAchievement(achievement).then(setAchievements);
+      createAchievement(achievement);
     }
 
-    setAchievement({
-      name: '',
-      img: '',
-      description: '',
-      achieved: false,
-      gameKey: '',
-      uid: userId,
-      key: null,
-    });
-
-    this.props.history.push('/');
+    <Redirect to='/achievements' />;
   };
 
   return (
@@ -76,7 +61,7 @@ export default function AchievementForm({
       <FormGroup>
         <Label for='achievementImg'>Image URL</Label>
         <Input
-          value={achievement.image}
+          value={achievement.img}
           type='url'
           name='img'
           id='achievementImg'
@@ -96,7 +81,7 @@ export default function AchievementForm({
       <FormGroup>
         <Label for='achievementAchieved'>Achieved?</Label>
         <Input
-          value={achievement.achieved}
+          checked={achievement.achieved}
           type='checkbox'
           name='achieved'
           id='achievementAchieved'
@@ -105,21 +90,21 @@ export default function AchievementForm({
       </FormGroup>
       <FormGroup>
         <Label for='achievementGame'>Game</Label>
-        <Input type='select' name='gameKey' id='game-select'>
+        <Input onChange={handleInputChange} type='select' value={achievement.gameKey} name='gameKey' id='game-select'>
+          <option value='' disabled hidden>Select Game</option>
           {games.map((game) => (
-            <option onClick={handleInputChange} key={game.key}>{game.name}</option>
+            <option value={game.key} key={game.key}>
+              {game.name}
+            </option>
           ))}
         </Input>
       </FormGroup>
-      <Button onClick={handleSubmit}>Submit</Button>
+      <Button type='submit'>Submit</Button>
     </Form>
   );
 }
 
 AchievementForm.propTypes = {
   userId: PropTypes.string.isRequired,
-  setGames: PropTypes.func.isRequired,
-  setAchievements: PropTypes.func.isRequired,
-  data: PropTypes.object,
-  games: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
 };

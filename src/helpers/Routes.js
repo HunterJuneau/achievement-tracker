@@ -11,7 +11,7 @@ const PrivateRoute = ({ component: Component, user, ...rest }) => {
     user ? (
       <Component {...taco} uid={user.uid} />
     ) : (
-      <Redirect to={{ pathname: '/unauthenticated', state: { from: taco.location } }} />
+      <Redirect to={{ pathname: '/', state: { from: taco.location } }} />
     )
   );
   return <Route {...rest} render={(props) => routeChecker(props)} />;
@@ -22,47 +22,29 @@ PrivateRoute.propTypes = {
   user: PropTypes.any,
 };
 
-export default function Routes({
-  user,
-  achievements,
-  setAchievements,
-  setGames,
-  games,
-}) {
+export default function Routes({ user }) {
   return (
     <>
       <Switch>
         <PrivateRoute
           exact
-          path='/'
+          path='/achievements'
           user={user}
-          component={() => (
-            <Achievements
-              achievements={achievements}
-              setAchievements={setAchievements}
-              setGames={setGames}
-            />
-          )}
+          component={() => <Achievements uid={user.uid} />}
         />
         <PrivateRoute
           path='/games'
           user={user}
-          component={() => (
-            <Games games={games} setGames={setGames} />
-          )}
+          component={() => <Games uid={user.uid} />}
         />
         <PrivateRoute
-          path='/form/:type/:key'
+          path='/achievements/new'
           user={user}
-          component={() => (
-            <FormView
-              setAchievements={setAchievements}
-              games={games}
-            />
-          )}
+          component={() => <FormView uid={user.uid} purpose='create' type='achievement' />}
         />
         <Route
-          path='/unauthenticated'
+          exact
+          path='/'
           component={() => <Unauthenticated user={user} />}
         />
       </Switch>
@@ -72,8 +54,4 @@ export default function Routes({
 
 Routes.propTypes = {
   user: PropTypes.any,
-  achievements: PropTypes.array.isRequired,
-  setAchievements: PropTypes.func.isRequired,
-  setGames: PropTypes.func.isRequired,
-  games: PropTypes.array.isRequired,
 };
