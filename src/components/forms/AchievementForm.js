@@ -11,13 +11,13 @@ import {
 
 export default function AchievementForm({ userId, data }) {
   const [achievement, setAchievement] = useState({
-    name: data.name || '',
-    img: data.img || '',
-    description: data.description || '',
-    achieved: data.achieved || false,
-    gameKey: data.gameKey || '',
+    name: data ? data.name : '',
+    img: data ? data.img : '',
+    description: data ? data.description : '',
+    achieved: data ? data.achieved : false,
+    gameKey: data ? data.gameKey : '',
     uid: userId,
-    key: data.key || null,
+    key: data ? data.key : null,
   });
 
   const [games, setGames] = useState([]);
@@ -112,5 +112,5 @@ export default function AchievementForm({ userId, data }) {
 
 AchievementForm.propTypes = {
   userId: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object,
 };
