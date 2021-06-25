@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
@@ -41,7 +40,15 @@ export default function AchievementForm({ userId, data }) {
       createAchievement(achievement);
     }
 
-    <Redirect to='/achievements' />;
+    setAchievement({
+      name: '',
+      img: '',
+      description: '',
+      achieved: false,
+      gameKey: '',
+      uid: userId,
+      key: null,
+    });
   };
 
   return (
