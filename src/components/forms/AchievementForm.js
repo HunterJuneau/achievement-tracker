@@ -3,7 +3,7 @@ import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import getGames from '../../helpers/data/gamesData';
+import { getGames } from '../../helpers/data/gamesData';
 import {
   updateAchievement,
   createAchievement,
@@ -34,7 +34,7 @@ export default function AchievementForm({ userId, data }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (achievement.firebaseKey) {
+    if (achievement.key) {
       updateAchievement(achievement);
     } else {
       createAchievement(achievement);

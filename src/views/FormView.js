@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AchievementForm from '../components/forms/AchievementForm';
 import { getSingleAchievement } from '../helpers/data/achievementsData';
+import GameForm from '../components/forms/GameForm';
 
 export default function FormView({ uid, purpose, type }) {
   const { key } = useParams();
@@ -17,14 +18,9 @@ export default function FormView({ uid, purpose, type }) {
   const formType = () => {
     switch (type) {
       case 'achievement':
-        return (
-          <AchievementForm
-            userId={uid}
-            data={data}
-          />
-        );
+        return <AchievementForm userId={uid} data={data} />;
       case 'game':
-        return console.warn('Game Form WIP');
+        return <GameForm uid={uid} data={data} />;
       default:
         return console.error('Wrong Form Type');
     }
