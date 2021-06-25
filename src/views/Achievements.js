@@ -38,17 +38,22 @@ export default function Achievements({ uid }) {
             <th>Name</th>
             <th>Description</th>
             <th>Achieved?</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {achievements
             .map((achievement) => (
               <AchievementCard
+                key={achievement.key}
                 achieved={achievement.achieved}
                 description={achievement.description}
                 img={achievement.img}
-                key={achievement.key}
                 name={achievement.name}
+                firebaseKey={achievement.key}
+                uid={uid}
+                setAchievements={setAchievements}
+                compare={compare}
               />
             ))}
         </tbody>

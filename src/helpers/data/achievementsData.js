@@ -33,6 +33,17 @@ const createAchievement = (obj) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const deleteAchievement = (key, uid) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbUrl}/achievements/${key}.json`)
+    .then(() => resolve(getAchievements(uid)))
+    .catch((error) => reject(error));
+});
+
 export {
-  getAchievements, getSingleAchievement, updateAchievement, createAchievement
+  getAchievements,
+  getSingleAchievement,
+  updateAchievement,
+  createAchievement,
+  deleteAchievement,
 };
