@@ -19,7 +19,7 @@ const getSingleAchievement = (key) => new Promise((resolve, reject) => {
 
 const updateAchievement = (obj) => new Promise((resolve, reject) => {
   axios
-    .patch(`${dbUrl}/achievements/${obj.firebaseKey}.json`, obj)
+    .patch(`${dbUrl}/achievements/${obj.key}.json`, obj)
     .then(resolve)
     .catch((error) => reject(error));
 });
@@ -28,7 +28,7 @@ const createAchievement = (obj) => new Promise((resolve, reject) => {
   axios
     .post(`${dbUrl}/achievements.json`, obj)
     .then((response) => {
-      updateAchievement({ firebaseKey: response.data.name }).then(resolve);
+      updateAchievement({ key: response.data.name }).then(resolve);
     })
     .catch((error) => reject(error));
 });

@@ -3,15 +3,12 @@ import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { getAchievements } from '../helpers/data/achievementsData';
-import getGames from '../helpers/data/gamesData';
 import AchievementCard from '../components/cards/AchievementCard';
 
 export default function Achievements({ uid }) {
   const [achievements, setAchievements] = useState([]);
-  const [games, setGames] = useState([]);
 
   useEffect(() => {
-    getGames(uid).then(setGames);
     getAchievements(uid).then(setAchievements);
   }, []);
 
@@ -36,7 +33,6 @@ export default function Achievements({ uid }) {
               img={achievement.img}
               key={achievement.key}
               name={achievement.name}
-              games={games}
             />
           ))}
         </tbody>

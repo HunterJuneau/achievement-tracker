@@ -30,7 +30,6 @@ export default function AchievementForm({ userId, data }) {
       ...prevState,
       [e.target.name]: e.target.name === 'achieved' ? e.target.checked : e.target.value
     }));
-    console.warn(achievement);
   };
 
   const handleSubmit = (e) => {

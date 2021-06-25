@@ -17,8 +17,8 @@ export default function AchievementCard({
 }
 
 AchievementCard.propTypes = {
-  img: PropTypes.string,
-  name: PropTypes.string,
-  description: PropTypes.string,
   achieved: PropTypes.bool,
+  img: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
 };
