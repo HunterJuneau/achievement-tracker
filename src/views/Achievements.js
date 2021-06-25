@@ -8,8 +8,23 @@ import AchievementCard from '../components/cards/AchievementCard';
 export default function Achievements({ uid }) {
   const [achievements, setAchievements] = useState([]);
 
+  const compare = (a, b) => {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+
+    let comparison = 0;
+    if (nameA > nameB) {
+      comparison = 1;
+    } else if (nameA < nameB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
   useEffect(() => {
-    getAchievements(uid).then(setAchievements);
+    getAchievements(uid).then((response) => (
+      setAchievements(response.sort(compare))
+    ));
   }, []);
 
   return (
@@ -26,15 +41,16 @@ export default function Achievements({ uid }) {
           </tr>
         </thead>
         <tbody>
-          {achievements.map((achievement) => (
-            <AchievementCard
-              achieved={achievement.achieved}
-              description={achievement.description}
-              img={achievement.img}
-              key={achievement.key}
-              name={achievement.name}
-            />
-          ))}
+          {achievements
+            .map((achievement) => (
+              <AchievementCard
+                achieved={achievement.achieved}
+                description={achievement.description}
+                img={achievement.img}
+                key={achievement.key}
+                name={achievement.name}
+              />
+            ))}
         </tbody>
       </Table>
     </div>
