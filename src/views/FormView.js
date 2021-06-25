@@ -19,8 +19,13 @@ export default function FormView({ uid, purpose, type }) {
       case 'achievement':
         return (
           <AchievementForm
-            userId={uid}
-            data={data}
+            uid={uid}
+            name={data.name}
+            img={data.img}
+            description={data.description}
+            achieved={data.achieved}
+            gameKey={data.gameKey}
+            firebaseKey={data.key}
           />
         );
       case 'game':

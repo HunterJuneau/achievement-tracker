@@ -9,25 +9,34 @@ import {
   createAchievement,
 } from '../../helpers/data/achievementsData';
 
-export default function AchievementForm({ userId, data }) {
+export default function AchievementForm({
+  uid,
+  name,
+  img,
+  description,
+  achieved,
+  gameKey,
+  firebaseKey,
+}) {
   const [achievement, setAchievement] = useState({
-    name: data ? data.name : '',
-    img: data ? data.img : '',
-    description: data ? data.description : '',
-    achieved: data ? data.achieved : false,
-    gameKey: data ? data.gameKey : '',
-    uid: userId,
-    key: data ? data.key : null,
+    name: name || '',
+    img: img || '',
+    description: description || '',
+    achieved: achieved || false,
+    gameKey: gameKey || '',
+    uid,
+    key: firebaseKey || null,
   });
-
+  console.warn(name);
   const [games, setGames] = useState([]);
 
-  useEffect(() => getGames(userId).then(setGames), []);
+  useEffect(() => getGames(uid).then(setGames), []);
 
   const handleInputChange = (e) => {
     setAchievement((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.name === 'achieved' ? e.target.checked : e.target.value
+      [e.target.name]:
+        e.target.name === 'achieved' ? e.target.checked : e.target.value,
     }));
   };
 
@@ -46,7 +55,7 @@ export default function AchievementForm({ userId, data }) {
       description: '',
       achieved: false,
       gameKey: '',
-      uid: userId,
+      uid,
       key: null,
     });
   };
@@ -96,8 +105,16 @@ export default function AchievementForm({ userId, data }) {
       </FormGroup>
       <FormGroup>
         <Label for='achievementGame'>Game</Label>
-        <Input onChange={handleInputChange} type='select' value={achievement.gameKey} name='gameKey' id='game-select'>
-          <option value='' disabled hidden>Select Game</option>
+        <Input
+          onChange={handleInputChange}
+          type='select'
+          value={achievement.gameKey}
+          name='gameKey'
+          id='game-select'
+        >
+          <option value='' disabled hidden>
+            Select Game
+          </option>
           {games.map((game) => (
             <option value={game.key} key={game.key}>
               {game.name}
@@ -111,6 +128,11 @@ export default function AchievementForm({ userId, data }) {
 }
 
 AchievementForm.propTypes = {
-  userId: PropTypes.string.isRequired,
-  data: PropTypes.object,
+  uid: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  img: PropTypes.string,
+  description: PropTypes.string,
+  achieved: PropTypes.bool,
+  gameKey: PropTypes.string,
+  firebaseKey: PropTypes.string,
 };
