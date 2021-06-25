@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-  Navbar, NavbarBrand, Nav, NavItem, NavLink, Button
+  Navbar, NavbarBrand, Nav, NavItem, Button
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import { signOutUser } from '../helpers/auth';
 
 export default function NavBar() {
@@ -10,10 +11,10 @@ export default function NavBar() {
       <NavbarBrand href='/'>Achievement Tracker</NavbarBrand>
       <Nav className='mr-auto' navbar>
         <NavItem>
-          <NavLink href='/'>Achievements</NavLink>
+          <Link to='/achievements'>Achievements</Link>
         </NavItem>
         <NavItem>
-          <NavLink href='/games'>Games</NavLink>
+          <Link to='/games'>Games</Link>
         </NavItem>
       </Nav>
       <Button onClick={signOutUser} color='warning'>
