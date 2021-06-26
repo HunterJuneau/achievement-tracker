@@ -7,6 +7,7 @@ const getOwnedGames = (steamId) => new Promise((resolve, reject) => {
   axios
     .get(
       `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${steamKey}&steamid=${steamId}&format=json&include_appinfo=1`,
+      { mode: 'cors', credentials: 'include' },
     )
     .then((response) => {
       resolve(response.data.response.games);
@@ -18,6 +19,7 @@ const getPlayerAchievements = (appId, steamId) => new Promise((resolve, reject) 
   axios
     .get(
       `https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=${appId}&key=${steamKey}&steamid=${steamId}&l=english`,
+      { mode: 'cors', credentials: 'include' },
     )
     .then((response) => {
       resolve(response.data.playerstats.achievements);
