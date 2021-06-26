@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Achievements from '../views/Achievements';
 import Games from '../views/Games';
 import FormView from '../views/FormView';
+import SteamView from '../views/SteamView';
 import Unauthenticated from '../views/Unauthenticated';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
@@ -51,6 +52,11 @@ export default function Routes({ user }) {
           component={() => (
             <FormView uid={user.uid} purpose='create' type='game' />
           )}
+        />
+        <PrivateRoute
+          path='/steam/games'
+          user={user}
+          component={() => <SteamView user={user} view='games' />}
         />
         <Route
           exact

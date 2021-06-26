@@ -68,6 +68,9 @@ export default function NavBar({ user, setUser }) {
           <NavItem>
             <Link to='/games'>Games</Link>
           </NavItem>
+          <NavItem>
+            <Link to='/steam/games'>Steam Games</Link>
+          </NavItem>
         </Nav>
         <UncontrolledDropdown nav inNavbar className='ml-auto'>
           <DropdownToggle nav caret>
