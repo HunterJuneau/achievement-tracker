@@ -9,7 +9,7 @@ import Unauthenticated from '../views/Unauthenticated';
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   const routeChecker = (taco) => (
     user ? (
-      <Component {...taco} uid={user.uid} />
+      <Component {...taco} user={user} />
     ) : (
       <Redirect to={{ pathname: '/', state: { from: taco.location } }} />
     )
@@ -33,14 +33,24 @@ export default function Routes({ user }) {
           component={() => <Achievements uid={user.uid} />}
         />
         <PrivateRoute
+          path='/achievements/new'
+          user={user}
+          component={() => (
+            <FormView uid={user.uid} purpose='create' type='achievement' />
+          )}
+        />
+        <PrivateRoute
+        exact
           path='/games'
           user={user}
           component={() => <Games uid={user.uid} />}
         />
         <PrivateRoute
-          path='/achievements/new'
+          path='/games/new'
           user={user}
-          component={() => <FormView uid={user.uid} purpose='create' type='achievement' />}
+          component={() => (
+            <FormView uid={user.uid} purpose='create' type='game' />
+          )}
         />
         <Route
           exact
