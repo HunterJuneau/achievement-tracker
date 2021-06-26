@@ -15,7 +15,14 @@ export default function Games({ uid }) {
       <Link to='/games/new'>Add Game</Link>
       <div className='game-container d-flex flex-flow justify-content-around mx-5 my-3'>
         {games.map((game) => (
-          <GameCard img={game.img} key={game.key} name={game.name} />
+          <GameCard
+            key={game.key}
+            firebaseKey={game.key}
+            uid={uid}
+            setGames={setGames}
+            img={game.img}
+            name={game.name}
+          />
         ))}
       </div>
     </div>

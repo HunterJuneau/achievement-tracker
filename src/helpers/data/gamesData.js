@@ -24,4 +24,13 @@ const createGame = (obj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getGames, updateGame, createGame };
+const deleteGame = (key, uid) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbUrl}/games/${key}.json`)
+    .then(() => resolve(getGames(uid)))
+    .catch(reject);
+});
+
+export {
+  getGames, updateGame, createGame, deleteGame
+};
