@@ -2,7 +2,7 @@
   "name": "react-template",
   "version": "0.1.0",
   "private": false,
-  "proxy": {"/api/**" : {
+  "proxy": {"/api.steampowered.com/**" : {
     "target": "http://localhost:8000",
     "secure" : false,
     "changeOrigin" : true
