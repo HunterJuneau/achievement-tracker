@@ -2,7 +2,7 @@
   "name": "react-template",
   "version": "0.1.0",
   "private": false,
-  "proxy": "*",
+  "proxy": "*.*",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@testing-library/jest-dom": "^5.11.4",
