@@ -27,7 +27,6 @@ export default function AchievementForm({
     uid,
     key: firebaseKey || null,
   });
-  console.warn(name);
   const [games, setGames] = useState([]);
 
   useEffect(() => getGames(uid).then(setGames), []);

@@ -35,7 +35,7 @@ export default function FormView({ uid, purpose, type }) {
     }
   };
 
-  return <div>{formType()}</div>;
+  return <div>{type === 'update' && !data ? '' : formType()}</div>;
 }
 
 FormView.propTypes = {
