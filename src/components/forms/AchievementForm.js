@@ -5,31 +5,43 @@ import {
 import PropTypes from 'prop-types';
 import getGames from '../../helpers/data/gamesData';
 import {
+  getSingleAchievement,
   updateAchievement,
   createAchievement,
 } from '../../helpers/data/achievementsData';
 
 export default function AchievementForm({
   uid,
-  name,
-  img,
-  description,
-  achieved,
-  gameKey,
-  firebaseKey,
+  achievementKey,
 }) {
   const [achievement, setAchievement] = useState({
-    name: name || '',
-    img: img || '',
-    description: description || '',
-    achieved: achieved || false,
-    gameKey: gameKey || '',
+    name: '',
+    img: '',
+    description: '',
+    achieved: false,
+    gameKey: '',
     uid,
-    key: firebaseKey || null,
+    key: null,
   });
   const [games, setGames] = useState([]);
 
-  useEffect(() => getGames(uid).then(setGames), []);
+  useEffect(() => {
+    getGames(uid).then(setGames);
+
+    if (achievementKey) {
+      getSingleAchievement(achievementKey).then((response) => {
+        setAchievement({
+          name: response.name,
+          img: response.img,
+          description: response.description,
+          achieved: response.achieved,
+          gameKey: response.gameKey,
+          uid,
+          key: response.key,
+        });
+      });
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     setAchievement((prevState) => ({
@@ -42,7 +54,7 @@ export default function AchievementForm({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (achievement.firebaseKey) {
+    if (achievement.key) {
       updateAchievement(achievement);
     } else {
       createAchievement(achievement);
@@ -128,10 +140,5 @@ export default function AchievementForm({
 
 AchievementForm.propTypes = {
   uid: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  img: PropTypes.string,
-  description: PropTypes.string,
-  achieved: PropTypes.bool,
-  gameKey: PropTypes.string,
-  firebaseKey: PropTypes.string,
+  achievementKey: PropTypes.string,
 };

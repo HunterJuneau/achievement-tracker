@@ -43,7 +43,7 @@ export default function Routes({ user }) {
           component={() => <FormView uid={user.uid} purpose='create' type='achievement' />}
         />
         <PrivateRoute
-          path='/achievements/edit/:key'
+          path='/achievements/edit/:achievementKey'
           user={user}
           component={() => <FormView uid={user.uid} purpose='update' type='achievement' />}
         />

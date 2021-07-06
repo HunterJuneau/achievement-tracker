@@ -1,41 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AchievementForm from '../components/forms/AchievementForm';
-import { getSingleAchievement } from '../helpers/data/achievementsData';
 
-export default function FormView({ uid, purpose, type }) {
-  const { key } = useParams();
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    if (purpose === 'update' && type === 'achievement') {
-      getSingleAchievement(key).then(setData);
-    }
-  }, []);
+export default function FormView({ uid, type }) {
+  const { achievementKey } = useParams();
 
   const formType = () => {
-    switch (type) {
-      case 'achievement':
-        return (
-          <AchievementForm
-            uid={uid}
-            name={data.name}
-            img={data.img}
-            description={data.description}
-            achieved={data.achieved}
-            gameKey={data.gameKey}
-            firebaseKey={data.key}
-          />
-        );
-      case 'game':
-        return console.warn('Game Form WIP');
-      default:
-        return console.error('Wrong Form Type');
+    if (type === 'achievement') {
+      return <AchievementForm uid={uid} achievementKey={achievementKey} />;
     }
+    return '';
   };
 
-  return <div>{type === 'update' && !data ? '' : formType()}</div>;
+  return <div>{formType()}</div>;
 }
 
 FormView.propTypes = {
