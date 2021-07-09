@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import { BrowserRouter } from 'react-router-dom';
+import { checkIn } from '../helpers/data/linkData';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
 
@@ -12,11 +13,14 @@ function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
-        const userInfoObj = {
-          fullName: authed.displayName,
-          uid: authed.uid,
-        };
-        setUser(userInfoObj);
+        checkIn(authed.uid).then((response) => {
+          setUser({
+            fullName: authed.displayName,
+            steam: response.steam,
+            linkKey: response.key,
+            uid: authed.uid,
+          });
+        });
       } else {
         setUser(false);
       }
@@ -25,7 +29,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {user && <NavBar />}
+      {user && <NavBar user={user} setUser={setUser} />}
       <Routes user={user} />
     </BrowserRouter>
   );

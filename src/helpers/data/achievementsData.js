@@ -21,7 +21,7 @@ const updateAchievement = (obj) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbUrl}/achievements/${obj.key}.json`, obj)
     .then(resolve)
-    .catch((error) => reject(error));
+    .catch(reject);
 });
 
 const createAchievement = (obj) => new Promise((resolve, reject) => {
@@ -30,14 +30,14 @@ const createAchievement = (obj) => new Promise((resolve, reject) => {
     .then((response) => {
       updateAchievement({ key: response.data.name }).then(resolve);
     })
-    .catch((error) => reject(error));
+    .catch(reject);
 });
 
 const deleteAchievement = (key, uid) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbUrl}/achievements/${key}.json`)
     .then(() => resolve(getAchievements(uid)))
-    .catch((error) => reject(error));
+    .catch(reject);
 });
 
 export {
