@@ -40,6 +40,11 @@ export default function Routes({ user }) {
           )}
         />
         <PrivateRoute
+          path='/achievements/edit/:dataKey'
+          user={user}
+          component={() => <FormView uid={user.uid} type='achievement' />}
+        />
+        <PrivateRoute
         exact
           path='/games'
           user={user}
@@ -53,9 +58,9 @@ export default function Routes({ user }) {
           )}
         />
         <PrivateRoute
-          path='/achievements/edit/:achievementKey'
+          path='/games/edit/:dataKey'
           user={user}
-          component={() => <FormView uid={user.uid} type='achievement' />}
+          component={() => <FormView uid={user.uid} type='game' />}
         />
         <Route
           exact

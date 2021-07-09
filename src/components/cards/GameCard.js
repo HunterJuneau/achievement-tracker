@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Card, CardBody, CardTitle, Button
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { deleteGame } from '../../helpers/data/gamesData';
 
@@ -22,6 +23,7 @@ export default function GameCard({
         <Button color='danger' onClick={handleDelete}>
           Delete
         </Button>
+        <Link to={`/games/edit/${firebaseKey}`}><Button color='info'>Edit</Button></Link>
       </CardBody>
     </Card>
   );
