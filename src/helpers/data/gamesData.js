@@ -10,6 +10,10 @@ const getGames = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleGame = (key) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/games/${key}.json`).then((response) => resolve(response.data)).catch(reject);
+});
+
 const updateGame = (obj) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbUrl}/games/${obj.key}.json`, obj)
@@ -32,5 +36,5 @@ const deleteGame = (key, uid) => new Promise((resolve, reject) => {
 });
 
 export {
-  getGames, updateGame, createGame, deleteGame
+  getGames, getSingleGame, updateGame, createGame, deleteGame
 };
