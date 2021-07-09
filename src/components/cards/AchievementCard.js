@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import { deleteAchievement } from '../../helpers/data/achievementsData';
 
 export default function AchievementCard({
@@ -24,14 +25,15 @@ export default function AchievementCard({
       <th>
         <Button
           color='danger'
-          onClick={() => (
-            deleteAchievement(firebaseKey, uid).then((response) => (
-              setAchievements(response.sort(compare))
-            ))
-          )}
+          onClick={() => {
+            deleteAchievement(firebaseKey, uid).then((response) => {
+              setAchievements(response.sort(compare));
+            });
+          }}
         >
           Delete
         </Button>
+        <Link to={`/achievements/edit/${firebaseKey}`}><Button color='info'>Edit</Button></Link>
       </th>
     </tr>
   );

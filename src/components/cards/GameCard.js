@@ -17,9 +17,11 @@ export default function GameCard({
       <CardBody>
         <CardTitle tag='h5'>{name}</CardTitle>
       </CardBody>
-      <img width='100%' src={img} alt={name} />
+      {img ? <img width='100%' src={img} alt={name} /> : ''}
       <CardBody>
-        <Button color='danger' onClick={handleDelete}>Delete</Button>
+        <Button color='danger' onClick={handleDelete}>
+          Delete
+        </Button>
       </CardBody>
     </Card>
   );
