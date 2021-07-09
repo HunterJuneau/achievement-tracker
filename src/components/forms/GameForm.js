@@ -5,12 +5,12 @@ import {
 import PropTypes from 'prop-types';
 import { updateGame, createGame } from '../../helpers/data/gamesData';
 
-export default function GameForm({ data, uid }) {
+export default function GameForm({ uid }) {
   const [game, setGame] = useState({
-    name: data.name || '',
-    img: data.img || '',
+    name: '',
+    img: '',
     uid,
-    key: data.key || null,
+    key: null,
   });
 
   const handleSubmit = (e) => {
@@ -67,5 +67,4 @@ export default function GameForm({ data, uid }) {
 
 GameForm.propTypes = {
   uid: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
 };

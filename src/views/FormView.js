@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AchievementForm from '../components/forms/AchievementForm';
+import GameForm from '../components/forms/GameForm';
 
 export default function FormView({ uid, type }) {
   const { achievementKey } = useParams();
@@ -9,6 +10,9 @@ export default function FormView({ uid, type }) {
   const formType = () => {
     if (type === 'achievement') {
       return <AchievementForm uid={uid} achievementKey={achievementKey} />;
+    }
+    if (type === 'game') {
+      return <GameForm uid={uid} />;
     }
     return '';
   };
@@ -18,6 +22,5 @@ export default function FormView({ uid, type }) {
 
 FormView.propTypes = {
   uid: PropTypes.string.isRequired,
-  purpose: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
