@@ -72,7 +72,7 @@ export default function AchievementForm({
   };
 
   return (
-    <Form onSubmit={handleSubmit} className='w-75 mx-auto' id='form'>
+    <Form onSubmit={handleSubmit} className=' mx-auto' id='form'>
       <FormGroup>
         <Label for='achievementName'>Name</Label>
         <Input
@@ -80,6 +80,7 @@ export default function AchievementForm({
           value={achievement.name}
           type='text'
           name='name'
+          className='w-75 mx-auto'
           id='achievementName'
           onChange={handleInputChange}
         />
@@ -90,6 +91,7 @@ export default function AchievementForm({
           value={achievement.img}
           type='url'
           name='img'
+          className='w-75 mx-auto'
           id='achievementImg'
           onChange={handleInputChange}
         />
@@ -100,6 +102,7 @@ export default function AchievementForm({
           value={achievement.description}
           type='textarea'
           name='description'
+          className='w-75 mx-auto'
           id='achievementDesc'
           onChange={handleInputChange}
         />
@@ -110,7 +113,7 @@ export default function AchievementForm({
           checked={achievement.achieved}
           type='checkbox'
           name='achieved'
-          className='mx-auto w-75'
+          className='mx-auto w-100'
           id='achievementAchieved'
           onChange={handleInputChange}
         />
@@ -122,6 +125,7 @@ export default function AchievementForm({
           type='select'
           value={achievement.gameKey}
           name='gameKey'
+          className='w-75 mx-auto'
           id='game-select'
         >
           <option value='' disabled hidden>

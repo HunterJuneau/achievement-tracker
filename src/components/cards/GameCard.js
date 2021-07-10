@@ -14,7 +14,7 @@ export default function GameCard({
   };
 
   return (
-    <Card className='game-card'>
+    <Card className='game-card my-3'>
       <CardBody>
         <CardTitle tag='h5'>{name}</CardTitle>
       </CardBody>

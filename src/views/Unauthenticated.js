@@ -10,8 +10,8 @@ export default function Unauthenticated({ user }) {
   }, [user]);
 
   return (
-    <>
-      <h1 className='mx-auto my-5'>Achievement Tracker</h1>
+    <div id='unauthenticatedContainer'>
+      <h1 className='mx-auto'>Achievement Tracker</h1>
       <img src='https://image.flaticon.com/icons/png/512/60/60778.png' alt='Check Mark Logo' className='mx-auto my-5 home-logo' />
       {user ? (
         ''
@@ -20,7 +20,7 @@ export default function Unauthenticated({ user }) {
           Log In
         </Button>
       )}
-    </>
+    </div>
   );
 }
 

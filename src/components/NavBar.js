@@ -62,11 +62,11 @@ export default function NavBar({ user, setUser }) {
       <Navbar color='dark' dark id='navbar'>
         <NavbarBrand href='/'><img src='https://image.flaticon.com/icons/png/512/60/60778.png' alt='Check Mark Logo' className='nav-logo' />Achievement Tracker</NavbarBrand>
         <Nav className='mr-auto' navbar>
-          <NavItem class='nav-item'>
-            <Link to='/achievements' class='link'>Achievements</Link>
+          <NavItem className='nav-item'>
+            <Link to='/achievements' className='link'>Achievements</Link>
           </NavItem>
-          <NavItem class='navi-item'>
-            <Link to='/games' class='link'>Games</Link>
+          <NavItem className='navi-item'>
+            <Link to='/games' className='link'>Games</Link>
           </NavItem>
         </Nav>
         <UncontrolledDropdown nav inNavbar className='ml-auto user-dropdown'>
