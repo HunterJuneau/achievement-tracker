@@ -1,129 +1,75 @@
-# Achievement Tracker
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-## Planning
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/HunterJuneau/achievement-tracker">
+    <img src="https://image.flaticon.com/icons/png/512/60/60778.png" alt="Logo" width="80" height="80">
+  </a>
 
-[ERD](https://dbdiagram.io/d/606d049decb54e10c33f0196)
+  <h3 align="center">Achievement Tracker</h3>
 
-[Wireframe](https://www.figma.com/file/zyEKuuJzwq1R8pZr4SvO1j/Achievement-Tracker?node-id=0%3A1)
+  <p align="center">
+    <a href="https://github.com/HunterJuneau/achievement-tracker"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://achievementtracker.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/HunterJuneau/achievement-tracker/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/HunterJuneau/achievement-tracker/issues">Request Feature</a>
+  </p>
+</p>
 
-[Workflow Diagram](https://docs.google.com/presentation/d/1UKe2_nfhDuoGah0M4lmr4b_Qb7N80aM_G37YldTiirQ/edit?usp=sharing)
+<!-- ABOUT THE PROJECT -->
 
-## Steam API Responses
+## About The Project
 
-### GetOwnedGames
+Achievement Tracker is an app designed for creating and tracking achievements for games or activities. It was designed for my capstone project at Nashville Software School, but I made this app because it's something that I wanted to use myself. In the app, you can add games, whether it be video games, board games, or even activities if you want. Then you can add achievements or goals for those games that you want to achieve. Once you complete them, you can mark them as so within the app, so that you can try to complete all of your achievements!
 
-For geting the APP ID of user's games. Could also be used to display playtime of user's games.
+### Built With
 
-```
-{
-    "response": {
-        "game_count": 492,
-        "games": [
-            {
-                "appid": 10,
-                "playtime_forever": 0,
-                "playtime_windows_forever": 0,
-                "playtime_mac_forever": 0,
-                "playtime_linux_forever": 0
-            },
-            {
-                "appid": 80,
-                "playtime_forever": 0,
-                "playtime_windows_forever": 0,
-                "playtime_mac_forever": 0,
-                "playtime_linux_forever": 0
-            },
-            {
-                "appid": 100,
-                "playtime_forever": 0,
-                "playtime_windows_forever": 0,
-                "playtime_mac_forever": 0,
-                "playtime_linux_forever": 0
-            }...
-```
-### GetSchemaForGame
+- [React](https://reactjs.org/)
+- [reactstrap](https://reactstrap.github.io/)
+- [Firebase](https://firebase.google.com/)
+- [Sass](https://sass-lang.com/)
 
-For getting the achievement stats like name, description, icon, etc.
+<!-- ROADMAP -->
 
-```
-"game": {
-        "gameName": "Rocket League BETA",
-        "gameVersion": "46",
-        "availableGameStats": {
-            "achievements": [
-                {
-                    "name": "Virtuoso",
-                    "defaultvalue": 0,
-                    "displayName": "Virtuoso",
-                    "hidden": 0,
-                    "description": "Unlock All Original Achievements",
-                    "icon": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/252950/d63287a74492218ac97000af0147f6e40bd51f1d.jpg",
-                    "icongray": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/252950/18817c941e75bdc1c4b1ef4cafb50e57741fa6ff.jpg"
-                },
-                {
-                    "name": "Stocked",
-                    "defaultvalue": 0,
-                    "displayName": "Stocked",
-                    "hidden": 0,
-                    "description": "Collect 150 Items",
-                    "icon": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/252950/689d4370df62dab7b3f904d4f7b182310958efd2.jpg",
-                    "icongray": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/252950/9e446f8213d7a3518163532790e137b448bc0713.jpg"
-                },
-                {
-                    "name": "FarFarAway",
-                    "defaultvalue": 0,
-                    "displayName": "Far, Far Away...",
-                    "hidden": 0,
-                    "description": "Drive a total of 50 km",
-                    "icon": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/252950/c3c40f439d804bbcf892229ed76b2bedb25058c7.jpg",
-                    "icongray": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/252950/5d6a645124bef11bc0adcf69172fd39c6628be5e.jpg"
-                }...
-```
+## Roadmap
 
-### GetPlayerAchievements
+See the [open issues](https://github.com/HunterJuneau/achievement-tracker/issues) for a list of proposed features (and known issues).
 
-For checking what achievements the user has completed and when they were completed.
+<!-- CONTACT -->
 
-```
-{
-    "playerstats": {
-        "steamID": "76561198092859323",
-        "gameName": "Rocket League",
-        "achievements": [
-            {
-                "apiname": "Virtuoso",
-                "achieved": 1,
-                "unlocktime": 1495308948
-            },
-            {
-                "apiname": "Stocked",
-                "achieved": 1,
-                "unlocktime": 1451203240
-            },
-            {
-                "apiname": "FarFarAway",
-                "achieved": 1,
-                "unlocktime": 1451345072
-            }...
-```
+## Contact
 
-### AppDetails
+Your Name - [@HunterJuneau17](https://twitter.com/HunterJuneau17) - huntlee17@gmail.com
 
-For getting info on Steam games
+Project Link: [https://github.com/HunterJuneau/achievement-tracker](https://github.com/HunterJuneau/achievement-tracker)
 
-```
+<!-- ACKNOWLEDGEMENTS -->
 
-  "218620": {
-    "success": true,
-    "data": {
-      "type": "game",
-      "name": "PAYDAY 2",
-      "steam_appid": 218620,
-      "required_age": "18",
-      "is_free": false,
-      "controller_support": "full",
-      "dlc": [
-        1619070,
-        1555040,
-        1555050...
-```
+## Acknowledgements
+
+- [Nashville Software School](https://nashvillesoftwareschool.com/)
+- [Dr. T](https://github.com/drteresavasquez)
+- [The Rest of My Instructors and Classmates](https://github.com/orgs/nss-evening-cohort-14/people)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/HunterJuneau/achievement-tracker.svg?style=for-the-badge
+[contributors-url]: https://github.com/HunterJuneau/achievement-tracker/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/HunterJuneau/achievement-tracker.svg?style=for-the-badge
+[forks-url]: https://github.com/HunterJuneau/achievement-tracker/network/members
+[stars-shield]: https://img.shields.io/github/stars/HunterJuneau/achievement-tracker.svg?style=for-the-badge
+[stars-url]: https://github.com/HunterJuneau/achievement-tracker/stargazers
+[issues-shield]: https://img.shields.io/github/issues/HunterJuneau/achievement-tracker.svg?style=for-the-badge
+[issues-url]: https://github.com/HunterJuneau/achievement-tracker/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/hjuneau
