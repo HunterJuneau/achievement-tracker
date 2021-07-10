@@ -60,24 +60,24 @@ export default function NavBar({ user, setUser }) {
   return (
     <>
       <Navbar color='dark' dark id='navbar'>
-        <NavbarBrand href='/'>Achievement Tracker</NavbarBrand>
+        <NavbarBrand href='/'><img src='https://image.flaticon.com/icons/png/512/60/60778.png' alt='Check Mark Logo' className='nav-logo' />Achievement Tracker</NavbarBrand>
         <Nav className='mr-auto' navbar>
-          <NavItem>
-            <Link to='/achievements'>Achievements</Link>
+          <NavItem class='nav-item'>
+            <Link to='/achievements' class='link'>Achievements</Link>
           </NavItem>
-          <NavItem>
-            <Link to='/games'>Games</Link>
+          <NavItem class='navi-item'>
+            <Link to='/games' class='link'>Games</Link>
           </NavItem>
         </Nav>
-        <UncontrolledDropdown nav inNavbar className='ml-auto'>
+        <UncontrolledDropdown nav inNavbar className='ml-auto user-dropdown'>
           <DropdownToggle nav caret>
             {user.fullName}
           </DropdownToggle>
           <DropdownMenu right>
             {user.steam ? (
-              <DropdownItem onClick={handleUnlink}>Unlink Steam</DropdownItem>
+              <DropdownItem onClick={handleUnlink} className='steam-connect'>Unlink Steam</DropdownItem>
             ) : (
-              <DropdownItem onClick={toggle}>Connect Steam</DropdownItem>
+              <DropdownItem onClick={toggle} className='steam-connect'>Connect Steam</DropdownItem>
             )}
             <DropdownItem onClick={signOutUser}>Log Out</DropdownItem>
           </DropdownMenu>

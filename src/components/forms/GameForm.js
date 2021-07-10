@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { updateGame, createGame } from '../../helpers/data/gamesData';
+import { getSingleGame, updateGame, createGame } from '../../helpers/data/gamesData';
 
-export default function GameForm({ data, uid }) {
+export default function GameForm({ uid, gameKey }) {
   const [game, setGame] = useState({
-    name: data.name || '',
-    img: data.img || '',
+    name: '',
+    img: '',
     uid,
-    key: data.key || null,
+    key: null,
   });
+
+  useEffect(() => {
+    if (gameKey) {
+      getSingleGame(gameKey).then((response) => {
+        setGame({
+          name: response.name,
+          img: response.img,
+          uid,
+          key: response.key,
+        });
+      });
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,5 +80,5 @@ export default function GameForm({ data, uid }) {
 
 GameForm.propTypes = {
   uid: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
+  gameKey: PropTypes.string,
 };
