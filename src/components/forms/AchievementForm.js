@@ -110,11 +110,12 @@ export default function AchievementForm({
           checked={achievement.achieved}
           type='checkbox'
           name='achieved'
+          className='mx-auto w-75'
           id='achievementAchieved'
           onChange={handleInputChange}
         />
       </FormGroup>
-      <FormGroup>
+      <FormGroup className='mt-5'>
         <Label for='achievementGame'>Game</Label>
         <Input
           onChange={handleInputChange}
