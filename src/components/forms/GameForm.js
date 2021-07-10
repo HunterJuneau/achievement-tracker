@@ -51,7 +51,7 @@ export default function GameForm({ uid, gameKey }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className='w-75 mx-auto'>
+    <Form onSubmit={handleSubmit} className='w-75 mx-auto mt-5 game-form'>
       <FormGroup>
         <Label for='gameName'>Name</Label>
         <Input
@@ -63,8 +63,8 @@ export default function GameForm({ uid, gameKey }) {
           onChange={handleInputChange}
         />
       </FormGroup>
-      <FormGroup>
-        <Label for='achievementName'>Name</Label>
+      <FormGroup className='mt-5'>
+        <Label for='achievementName'>Image URL</Label>
         <Input
           value={game.img}
           type='text'
