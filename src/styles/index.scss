@@ -4,3 +4,29 @@
 body {
   background-color: $favColor;
 }
+
+.nav-logo {
+  height: 30px;
+  margin-right: 8px;
+}
+
+.user-dropdown {
+  list-style-type: none;
+}
+
+.steam-connect {
+  display: none;
+}
+
+h1 {
+  color: white;
+}
+
+.home-logo {
+  height: 200px;
+  display: block;
+}
+
+.link:hover {
+  text-decoration: none;
+}
