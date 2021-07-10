@@ -12,7 +12,7 @@ export default function Games({ uid }) {
   return (
     <div className='m-5' id='games'>
       <h2>Your Games</h2>
-      <Link to='/games/new'>Add Game</Link>
+      <Link to='/games/new' class='link'>Add Game</Link>
       <div className='game-container d-flex flex-flow justify-content-around mx-5 my-3'>
         {games.map((game) => (
           <GameCard
