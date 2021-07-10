@@ -22,6 +22,12 @@
     <a href="https://github.com/HunterJuneau/achievement-tracker/issues">Report Bug</a>
     ·
     <a href="https://github.com/HunterJuneau/achievement-tracker/issues">Request Feature</a>
+    ·
+    <a href="https://www.figma.com/file/zyEKuuJzwq1R8pZr4SvO1j/Achievement-Tracker?node-id=0%3A1">Wireframe</a>
+    ·
+    <a href="https://dbdiagram.io/d/606d049decb54e10c33f0196">ERD</a>
+    ·
+    <a href="https://docs.google.com/presentation/d/1UKe2_nfhDuoGah0M4lmr4b_Qb7N80aM_G37YldTiirQ/edit?usp=sharing">Data Flow Chart</a>
   </p>
 </p>
 
