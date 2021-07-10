@@ -30,7 +30,7 @@ export default function Achievements({ uid }) {
   return (
     <div className='mx-auto my-3' id='achievements'>
       <h1>Achievements</h1>
-      <Link to='/achievements/new' class='link'>Add Achievement</Link>
+      <Link to='/achievements/new' className='link'>Add Achievement</Link>
       <Table bordered className='my-4' id='achievementsTable'>
         <thead>
           <tr>

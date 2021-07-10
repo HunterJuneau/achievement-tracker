@@ -1,10 +1,6 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
 
-body {
-  background-color: $favColor;
-}
-
 .nav-logo {
   height: 30px;
   margin-right: 8px;
@@ -35,6 +31,14 @@ h1 {
   display: block;
 }
 
+.game-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 .game-form {
   color: white;
+  background-color: #1b2c38;
+  height: 100vh;
 }
